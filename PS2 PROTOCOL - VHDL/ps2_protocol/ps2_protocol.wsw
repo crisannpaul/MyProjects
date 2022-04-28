@@ -1,0 +1,16 @@
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\resurse\src/Display.vhd|]
+TemplateId=0
+tab=lu
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\resurse\src/Freq_divider.vhd|]
+TemplateId=0
+tab=lu
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\resurse\src/Reciever.vhd|]
+TemplateId=0
+tab=lu
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\resurse\src/Big_thing.vhd|]
+TemplateId=0
+ActiveDocument=1
+tab=lu
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\resurse\src/TestBench/big_thing_TB.vhd|]
+TemplateId=0
+tab=lu

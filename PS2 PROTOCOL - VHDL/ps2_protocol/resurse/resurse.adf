@@ -1,0 +1,84 @@
+[Project]
+Current Flow=Multivendor
+VCS=0
+version=4
+Current Config=compile
+
+[Configurations]
+compile=resurse
+
+[Library]
+resurse=.\resurse.lib
+
+[$LibMap$]
+resurse=.
+Active_lib=
+
+[Settings]
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+SYNTH_TOOL=<none>
+IMPL_TOOL=<none>
+FAMILY=
+FLOWTOOLS=ONLY_IMPL
+
+[IMPLEMENTATION]
+UCF=
+
+[HierarchyViewer]
+SortInfo=u
+HierarchyInformation=reciever|arch_reciever|0     
+ShowHide=ShowTopLevel
+Selected=
+
+[SpecTracer]
+WindowVisible=0
+
+[Groups]
+TestBench=1
+
+[Folders]
+Name0=Event Lists
+Directory0=C:\My_Designs\ps2_protocol\resurse\
+Extension0=lst
+Name1=Logs
+Directory1=C:\My_Designs\ps2_protocol\resurse\
+Extension1=log;htm;xml;txt
+Name2=Waveforms
+Directory2=C:\My_Designs\ps2_protocol\resurse\
+Extension2=asdb;awc;asdbc;asdbe
+Name3=Makefiles
+Directory3=C:\My_Designs\ps2_protocol\resurse\
+Extension3=mak
+Name4=Memory
+Directory4=C:\My_Designs\ps2_protocol\resurse\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=C:\My_Designs\ps2_protocol\resurse\
+Extension5=dll
+Name6=PDF
+Directory6=C:\My_Designs\ps2_protocol\resurse\
+Extension6=pdf
+Name7=HTML
+Directory7=C:\My_Designs\ps2_protocol\resurse\
+Extension7=htm;html
+
+[Files]
+/Freq_divider.vhd=-1
+/Reciever.vhd=-1
+/Display.vhd=-1
+/Big_thing.vhd=-1
+/test.vhd=-1
+TestBench/big_thing_TB.vhd=-1
+TestBench/big_thing_TB_runtest.do=-1
+
+[Files.Data]
+.\src\Freq_divider.vhd=VHDL Source Code
+.\src\Reciever.vhd=VHDL Source Code
+.\src\Display.vhd=VHDL Source Code
+.\src\Big_thing.vhd=VHDL Source Code
+.\src\test.vhd=VHDL Source Code
+.\src\TestBench\big_thing_TB.vhd=VHDL Test Bench
+.\src\TestBench\big_thing_TB_runtest.do=Macro
+
