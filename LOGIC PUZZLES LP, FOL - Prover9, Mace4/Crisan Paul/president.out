@@ -1,0 +1,324 @@
+============================== Mace4 =================================
+Mace4 (64) version 2017-11A (CIIRC), November 2017.
+Process 37235 was started by daddy on daddy,
+Sun Jan 15 18:11:14 2023
+The command was "./mace4 -f president.p9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file president.p9
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,5).
+    % assign(domain_size, 5) -> assign(start_size, 5).
+    % assign(domain_size, 5) -> assign(end_size, 5).
+
+list(distinct).
+[Black,Blue,Green,Purple,Red].
+[Alicia,Claire,Gianna,Layla,Madelyn].
+[Abraham,Obama,Franklin,George,Ronald].
+[250_words,300_words,350_words,400_words,450_words].
+[Brother,Father,Grandfather,Mother,Sister].
+[9_years,10_years,11_years,12_years,13_years].
+end_of_list.
+
+formulas(assumptions).
+right_neighbor(x,y) <-> x + 1 = y.
+somewhere_left(x,y) <-> x < y.
+somewhere_right(x,y) <-> x > y.
+somewhere_between(x,y,z) <-> x < y & y < z.
+neighbors(x,y) <-> right_neighbor(x,y) | right_neighbor(y,x).
+right_neighbor(Obama,10_years).
+Red = Sister.
+9_years = 0 | 9_years = 4.
+Ronald = 0.
+right_neighbor(Sister,Layla).
+Alicia = 350_words.
+neighbor(10_years,Obama).
+somewhere_left(Purple,Father).
+somewhere_between(300_words,450_words,Sister).
+Abraham = 0 | Abraham = 4.
+Mother = 3.
+right_neighbor(11_years,Alicia).
+somewhere_between(300_words,Green,13_years).
+400_words = 0 | 400_words = 4.
+somewhere_left(Green,Franklin).
+Gianna = 450_words.
+somewhere_between(Blue,Green,Obama).
+neighbors(450_words,Sister).
+Madelyn = 4.
+neighbors(Grandfather,Red).
+12_years = Black.
+right_neighbor(450_words,Obama).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 right_neighbor(x,y) <-> x + 1 = y # label(non_clause).  [assumption].
+2 somewhere_left(x,y) <-> x < y # label(non_clause).  [assumption].
+3 somewhere_right(x,y) <-> x > y # label(non_clause).  [assumption].
+4 somewhere_between(x,y,z) <-> x < y & y < z # label(non_clause).  [assumption].
+5 neighbors(x,y) <-> right_neighbor(x,y) | right_neighbor(y,x) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-right_neighbor(x,y) | x + 1 = y.
+right_neighbor(x,y) | x + 1 != y.
+-somewhere_left(x,y) | x < y.
+somewhere_left(x,y) | -(x < y).
+-somewhere_right(x,y) | x > y.
+somewhere_right(x,y) | -(x > y).
+-somewhere_between(x,y,z) | x < y.
+-somewhere_between(x,y,z) | y < z.
+somewhere_between(x,y,z) | -(x < y) | -(y < z).
+-neighbors(x,y) | right_neighbor(x,y) | right_neighbor(y,x).
+neighbors(x,y) | -right_neighbor(x,y).
+neighbors(x,y) | -right_neighbor(y,x).
+right_neighbor(Obama,10_years).
+Red = Sister.
+9_years = 0 | 9_years = 4.
+Ronald = 0.
+right_neighbor(Sister,Layla).
+Alicia = 350_words.
+neighbor(10_years,Obama).
+somewhere_left(Purple,Father).
+somewhere_between(300_words,450_words,Sister).
+Abraham = 0 | Abraham = 4.
+Mother = 3.
+right_neighbor(11_years,Alicia).
+somewhere_between(300_words,Green,13_years).
+400_words = 0 | 400_words = 4.
+somewhere_left(Green,Franklin).
+Gianna = 450_words.
+somewhere_between(Blue,Green,Obama).
+neighbors(450_words,Sister).
+Madelyn = 4.
+neighbors(Grandfather,Red).
+12_years = Black.
+right_neighbor(450_words,Obama).
+Black != Blue.
+Black != Green.
+Black != Purple.
+Black != Red.
+Blue != Green.
+Blue != Purple.
+Blue != Red.
+Green != Purple.
+Green != Red.
+Purple != Red.
+Alicia != Claire.
+Alicia != Gianna.
+Alicia != Layla.
+Alicia != Madelyn.
+Claire != Gianna.
+Claire != Layla.
+Claire != Madelyn.
+Gianna != Layla.
+Gianna != Madelyn.
+Layla != Madelyn.
+Abraham != Obama.
+Abraham != Franklin.
+Abraham != George.
+Abraham != Ronald.
+Obama != Franklin.
+Obama != George.
+Obama != Ronald.
+Franklin != George.
+Franklin != Ronald.
+George != Ronald.
+250_words != 300_words.
+250_words != 350_words.
+250_words != 400_words.
+250_words != 450_words.
+300_words != 350_words.
+300_words != 400_words.
+300_words != 450_words.
+350_words != 400_words.
+350_words != 450_words.
+400_words != 450_words.
+Brother != Father.
+Brother != Grandfather.
+Brother != Mother.
+Brother != Sister.
+Father != Grandfather.
+Father != Mother.
+Father != Sister.
+Grandfather != Mother.
+Grandfather != Sister.
+Mother != Sister.
+9_years != 10_years.
+9_years != 11_years.
+9_years != 12_years.
+9_years != 13_years.
+10_years != 11_years.
+10_years != 12_years.
+10_years != 13_years.
+11_years != 12_years.
+11_years != 13_years.
+12_years != 13_years.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 4.
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(10_years, [ 3 ]),
+
+        function(11_years, [ 1 ]),
+
+        function(12_years, [ 4 ]),
+
+        function(13_years, [ 2 ]),
+
+        function(300_words, [ 0 ]),
+
+        function(350_words, [ 2 ]),
+
+        function(400_words, [ 4 ]),
+
+        function(450_words, [ 1 ]),
+
+        function(9_years, [ 0 ]),
+
+        function(Abraham, [ 4 ]),
+
+        function(Alicia, [ 2 ]),
+
+        function(Black, [ 4 ]),
+
+        function(Blue, [ 0 ]),
+
+        function(Father, [ 4 ]),
+
+        function(Franklin, [ 3 ]),
+
+        function(Gianna, [ 1 ]),
+
+        function(Grandfather, [ 1 ]),
+
+        function(Green, [ 1 ]),
+
+        function(Layla, [ 3 ]),
+
+        function(Madelyn, [ 4 ]),
+
+        function(Mother, [ 3 ]),
+
+        function(Obama, [ 2 ]),
+
+        function(Purple, [ 3 ]),
+
+        function(Red, [ 2 ]),
+
+        function(Ronald, [ 0 ]),
+
+        function(Sister, [ 2 ]),
+
+        relation(neighbor(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(neighbors(_,_), [
+			   0, 1, 0, 0, 0,
+			   1, 0, 1, 0, 0,
+			   0, 1, 0, 1, 0,
+			   0, 0, 1, 0, 1,
+			   0, 0, 0, 1, 0 ]),
+
+        relation(right_neighbor(_,_), [
+			   0, 1, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(somewhere_left(_,_), [
+			   0, 1, 1, 1, 1,
+			   0, 0, 1, 1, 1,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(somewhere_right(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0,
+			   1, 1, 0, 0, 0,
+			   1, 1, 1, 0, 0,
+			   1, 1, 1, 1, 0 ]),
+
+        relation(somewhere_between(_,_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 1, 1, 1,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        function(250_words, [ 3 ]),
+
+        function(Brother, [ 0 ]),
+
+        function(Claire, [ 0 ]),
+
+        function(George, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=682, kept=307.
+Selections=36, assignments=74, propagations=295, current_models=1.
+Rewrite_terms=466, rewrite_bools=434, indexes=8.
+Rules_from_neg_clauses=49, cross_offs=287.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 37235 exit (max_models) Sun Jan 15 18:11:14 2023
+The process finished Sun Jan 15 18:11:14 2023

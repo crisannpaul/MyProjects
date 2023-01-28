@@ -1,0 +1,115 @@
+============================== Mace4 =================================
+Mace4 (64) version 2017-11A (CIIRC), November 2017.
+Process 29068 was started by daddy on daddy,
+Sat Jan 14 19:16:49 2023
+The command was "./mace4 -f trail9.p9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file trail9.p9
+
+assign(max_models,-1).
+assign(domain_size,2).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+formulas(assumptions).
+lady1 | lady2 | lady3.
+(lady1 -> -lady2 & -lady3) & (lady2 -> -lady1 & -lady3) & (lady3 -> -lady1 & -lady2).
+tiger1 & tiger2 | tiger1 & tiger3 | tiger2 & tiger3.
+(lady1 -> -tiger1) & (lady2 -> -tiger2) & (lady3 -> -tiger3).
+door1 <-> tiger1.
+door2 <-> lady2.
+door3 <-> tiger2.
+door1 & -door2 & -door3 | door2 & -door1 & -door3 | door3 & -door1 & -door2 | -door1 & -door2 & -door3.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (lady1 -> -lady2 & -lady3) & (lady2 -> -lady1 & -lady3) & (lady3 -> -lady1 & -lady2) # label(non_clause).  [assumption].
+2 tiger1 & tiger2 | tiger1 & tiger3 | tiger2 & tiger3 # label(non_clause).  [assumption].
+3 (lady1 -> -tiger1) & (lady2 -> -tiger2) & (lady3 -> -tiger3) # label(non_clause).  [assumption].
+4 door1 <-> tiger1 # label(non_clause).  [assumption].
+5 door2 <-> lady2 # label(non_clause).  [assumption].
+6 door3 <-> tiger2 # label(non_clause).  [assumption].
+7 door1 & -door2 & -door3 | door2 & -door1 & -door3 | door3 & -door1 & -door2 | -door1 & -door2 & -door3 # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+lady1 | lady2 | lady3.
+-lady1 | -lady2.
+-lady1 | -lady3.
+-lady2 | -lady3.
+tiger1 | tiger2.
+tiger1 | tiger3.
+tiger2 | tiger3.
+-lady1 | -tiger1.
+-lady2 | -tiger2.
+-lady3 | -tiger3.
+-door1 | tiger1.
+door1 | -tiger1.
+-door2 | lady2.
+door2 | -lady2.
+-door3 | tiger2.
+door3 | -tiger2.
+-door2 | -door1.
+-door3 | -door1.
+-door3 | -door2.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        relation(door1, [ 0 ]),
+
+        relation(door2, [ 0 ]),
+
+        relation(door3, [ 1 ]),
+
+        relation(lady1, [ 1 ]),
+
+        relation(lady2, [ 0 ]),
+
+        relation(lady3, [ 0 ]),
+
+        relation(tiger1, [ 0 ]),
+
+        relation(tiger2, [ 1 ]),
+
+        relation(tiger3, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=19, kept=19.
+Selections=1, assignments=2, propagations=16, current_models=1.
+Rewrite_terms=0, rewrite_bools=53, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29068 exit (all_models) Sat Jan 14 19:16:49 2023
+The process finished Sat Jan 14 19:16:49 2023

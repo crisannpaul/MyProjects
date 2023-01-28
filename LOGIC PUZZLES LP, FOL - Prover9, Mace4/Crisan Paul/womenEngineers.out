@@ -1,0 +1,315 @@
+============================== Mace4 =================================
+Mace4 (64) version 2017-11A (CIIRC), November 2017.
+Process 34722 was started by daddy on daddy,
+Sun Jan 15 12:18:07 2023
+The command was "./mace4 -f womenEngineers.p9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file womenEngineers.p9
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,5).
+    % assign(domain_size, 5) -> assign(start_size, 5).
+    % assign(domain_size, 5) -> assign(end_size, 5).
+
+list(distinct).
+[Black,Blue,Green,Red,White].
+[Cindy,Jasmin,Norma,Sheila,Tiffany].
+[Aerospace,Civil,Computer,Electronic,Mechanical].
+[25_years,30_years,35_years,40_years,45_years].
+[Camping,Origami,Sailing,Writing,Yoga].
+[Coffee,Juice,Soft,Tea,Water].
+end_of_list.
+
+formulas(assumptions).
+right_neighbor(x,y) <-> x + 1 = y.
+somewhere_left(x,y) <-> x < y.
+somewhere_right(x,y) <-> x > y.
+somewhere_between(x,y,z) <-> x < y & y < z.
+neighbors(x,y) <-> right_neighbor(x,y) | right_neighbor(y,x).
+somewhere_between(45_years,Blue,Norma).
+neighbors(Yoga,White).
+Civil = 0 | Civil = 4.
+neighbors(Sheila,Coffee).
+Red = 3.
+neighbors(Electronic,Black).
+somewhere_between(Juice,Soft,35_years).
+Green = 2.
+neighbors(Coffee,35_years).
+Writing = Soft.
+neighbors(Electronic,Norma).
+somewhere_between(Sailing,Origami,Camping).
+neighbors(Water,Jasmin).
+right_neighbor(25_years,Red).
+Coffee = 0 | Coffee = 4.
+somewhere_between(Cindy,Blue,Jasmin).
+neighbors(Aerospace,Sailing).
+neighbors(Norma,Tea).
+Coffee = 30_years.
+somewhere_between(Computer,Blue,Camping).
+Jasmin = 2.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 right_neighbor(x,y) <-> x + 1 = y # label(non_clause).  [assumption].
+2 somewhere_left(x,y) <-> x < y # label(non_clause).  [assumption].
+3 somewhere_right(x,y) <-> x > y # label(non_clause).  [assumption].
+4 somewhere_between(x,y,z) <-> x < y & y < z # label(non_clause).  [assumption].
+5 neighbors(x,y) <-> right_neighbor(x,y) | right_neighbor(y,x) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-right_neighbor(x,y) | x + 1 = y.
+right_neighbor(x,y) | x + 1 != y.
+-somewhere_left(x,y) | x < y.
+somewhere_left(x,y) | -(x < y).
+-somewhere_right(x,y) | x > y.
+somewhere_right(x,y) | -(x > y).
+-somewhere_between(x,y,z) | x < y.
+-somewhere_between(x,y,z) | y < z.
+somewhere_between(x,y,z) | -(x < y) | -(y < z).
+-neighbors(x,y) | right_neighbor(x,y) | right_neighbor(y,x).
+neighbors(x,y) | -right_neighbor(x,y).
+neighbors(x,y) | -right_neighbor(y,x).
+somewhere_between(45_years,Blue,Norma).
+neighbors(Yoga,White).
+Civil = 0 | Civil = 4.
+neighbors(Sheila,Coffee).
+Red = 3.
+neighbors(Electronic,Black).
+somewhere_between(Juice,Soft,35_years).
+Green = 2.
+neighbors(Coffee,35_years).
+Writing = Soft.
+neighbors(Electronic,Norma).
+somewhere_between(Sailing,Origami,Camping).
+neighbors(Water,Jasmin).
+right_neighbor(25_years,Red).
+Coffee = 0 | Coffee = 4.
+somewhere_between(Cindy,Blue,Jasmin).
+neighbors(Aerospace,Sailing).
+neighbors(Norma,Tea).
+Coffee = 30_years.
+somewhere_between(Computer,Blue,Camping).
+Jasmin = 2.
+Black != Blue.
+Black != Green.
+Black != Red.
+Black != White.
+Blue != Green.
+Blue != Red.
+Blue != White.
+Green != Red.
+Green != White.
+Red != White.
+Cindy != Jasmin.
+Cindy != Norma.
+Cindy != Sheila.
+Cindy != Tiffany.
+Jasmin != Norma.
+Jasmin != Sheila.
+Jasmin != Tiffany.
+Norma != Sheila.
+Norma != Tiffany.
+Sheila != Tiffany.
+Aerospace != Civil.
+Aerospace != Computer.
+Aerospace != Electronic.
+Aerospace != Mechanical.
+Civil != Computer.
+Civil != Electronic.
+Civil != Mechanical.
+Computer != Electronic.
+Computer != Mechanical.
+Electronic != Mechanical.
+25_years != 30_years.
+25_years != 35_years.
+25_years != 40_years.
+25_years != 45_years.
+30_years != 35_years.
+30_years != 40_years.
+30_years != 45_years.
+35_years != 40_years.
+35_years != 45_years.
+40_years != 45_years.
+Camping != Origami.
+Camping != Sailing.
+Camping != Writing.
+Camping != Yoga.
+Origami != Sailing.
+Origami != Writing.
+Origami != Yoga.
+Sailing != Writing.
+Sailing != Yoga.
+Writing != Yoga.
+Coffee != Juice.
+Coffee != Soft.
+Coffee != Tea.
+Coffee != Water.
+Juice != Soft.
+Juice != Tea.
+Juice != Water.
+Soft != Tea.
+Soft != Water.
+Tea != Water.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 4.
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(25_years, [ 2 ]),
+
+        function(30_years, [ 4 ]),
+
+        function(35_years, [ 3 ]),
+
+        function(45_years, [ 0 ]),
+
+        function(Aerospace, [ 1 ]),
+
+        function(Black, [ 4 ]),
+
+        function(Blue, [ 1 ]),
+
+        function(Camping, [ 4 ]),
+
+        function(Cindy, [ 0 ]),
+
+        function(Civil, [ 4 ]),
+
+        function(Coffee, [ 4 ]),
+
+        function(Computer, [ 0 ]),
+
+        function(Electronic, [ 3 ]),
+
+        function(Green, [ 2 ]),
+
+        function(Jasmin, [ 2 ]),
+
+        function(Juice, [ 0 ]),
+
+        function(Norma, [ 4 ]),
+
+        function(Origami, [ 3 ]),
+
+        function(Red, [ 3 ]),
+
+        function(Sailing, [ 0 ]),
+
+        function(Sheila, [ 3 ]),
+
+        function(Soft, [ 2 ]),
+
+        function(Tea, [ 3 ]),
+
+        function(Water, [ 1 ]),
+
+        function(White, [ 0 ]),
+
+        function(Writing, [ 2 ]),
+
+        function(Yoga, [ 1 ]),
+
+        relation(neighbors(_,_), [
+			   0, 1, 0, 0, 0,
+			   1, 0, 1, 0, 0,
+			   0, 1, 0, 1, 0,
+			   0, 0, 1, 0, 1,
+			   0, 0, 0, 1, 0 ]),
+
+        relation(right_neighbor(_,_), [
+			   0, 1, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(somewhere_left(_,_), [
+			   0, 1, 1, 1, 1,
+			   0, 0, 1, 1, 1,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(somewhere_right(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0,
+			   1, 1, 0, 0, 0,
+			   1, 1, 1, 0, 0,
+			   1, 1, 1, 1, 0 ]),
+
+        relation(somewhere_between(_,_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 1, 1, 1,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 1,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        function(40_years, [ 1 ]),
+
+        function(Mechanical, [ 2 ]),
+
+        function(Tiffany, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=681, kept=305.
+Selections=12, assignments=48, propagations=268, current_models=1.
+Rewrite_terms=337, rewrite_bools=410, indexes=0.
+Rules_from_neg_clauses=33, cross_offs=164.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 34722 exit (max_models) Sun Jan 15 12:18:07 2023
+The process finished Sun Jan 15 12:18:07 2023

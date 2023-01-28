@@ -1,0 +1,15 @@
+assign(max_models, -1).
+assign(domain_size, 2).
+
+formulas(assumptions).
+  lady1 | lady2 | lady3.
+
+  (lady1 -> -lady2 & -lady3) & (lady2 -> -lady1 & -lady3) & (lady3 -> -lady1 & -lady2).
+  (tiger1 & tiger2) | (tiger1 & tiger3) | (tiger2 & tiger3).
+  (lady1 -> -tiger1) & (lady2 -> -tiger2) & (lady3 -> -tiger3).  
+
+  door1 <-> tiger1.              
+  door2 <-> lady2.       
+  door3 <-> tiger2.
+  (door1 & -door2 & -door3) | ( door2 & -door1 & -door3) | (door3 & -door1 & -door2) | (-door1 & -door2 & -door3).
+end_of_list.

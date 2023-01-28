@@ -1,0 +1,14 @@
+[Version]
+Version=6.3
+[Designs]
+resurse=.\resurse\resurse.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+macro=
+[Expand]
+resurse=1
+[Settings]
+Active=resurse

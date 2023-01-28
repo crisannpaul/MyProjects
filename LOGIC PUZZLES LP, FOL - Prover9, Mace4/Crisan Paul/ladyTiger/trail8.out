@@ -1,0 +1,110 @@
+============================== Mace4 =================================
+Mace4 (64) version 2017-11A (CIIRC), November 2017.
+Process 28937 was started by daddy on daddy,
+Sat Jan 14 19:12:47 2023
+The command was "./mace4 -f trail8.p9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file trail8.p9
+
+assign(max_models,-1).
+assign(domain_size,2).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+formulas(assumptions).
+L1 & L2 | L1 & T2 | L2 & T1 | T1 & T2.
+(L1 -> -T1) & (L2 -> -T2).
+R2 & R1 | -R2 & -R1.
+L1 -> R1.
+T1 -> -R1.
+L2 -> -R2.
+T2 -> R2.
+(R1 <-> T1) | (R2 <-> T2).
+(R2 <-> T1 & T2) | (R1 <-> T1 & T2).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 L1 & L2 | L1 & T2 | L2 & T1 | T1 & T2 # label(non_clause).  [assumption].
+2 (L1 -> -T1) & (L2 -> -T2) # label(non_clause).  [assumption].
+3 R2 & R1 | -R2 & -R1 # label(non_clause).  [assumption].
+4 L1 -> R1 # label(non_clause).  [assumption].
+5 T1 -> -R1 # label(non_clause).  [assumption].
+6 L2 -> -R2 # label(non_clause).  [assumption].
+7 T2 -> R2 # label(non_clause).  [assumption].
+8 (R1 <-> T1) | (R2 <-> T2) # label(non_clause).  [assumption].
+9 (R2 <-> T1 & T2) | (R1 <-> T1 & T2) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+L1 | T1.
+L2 | T2.
+-L1 | -T1.
+-L2 | -T2.
+R2 | -R1.
+R1 | -R2.
+-L1 | R1.
+-T1 | -R1.
+-L2 | -R2.
+-T2 | R2.
+-R1 | T1 | -R2 | T2.
+-R1 | T1 | R2 | -T2.
+R1 | -T1 | -R2 | T2.
+R1 | -T1 | R2 | -T2.
+-R2 | T1 | -R1.
+-R2 | T2 | -R1.
+R2 | -T1 | -T2 | R1.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        relation(L1, [ 0 ]),
+
+        relation(L2, [ 1 ]),
+
+        relation(R1, [ 0 ]),
+
+        relation(R2, [ 0 ]),
+
+        relation(T1, [ 1 ]),
+
+        relation(T2, [ 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=17, kept=17.
+Selections=1, assignments=2, propagations=8, current_models=1.
+Rewrite_terms=0, rewrite_bools=48, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 28937 exit (all_models) Sat Jan 14 19:12:47 2023
+The process finished Sat Jan 14 19:12:47 2023

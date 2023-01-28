@@ -1,0 +1,16 @@
+126
+~E 1 "./src/Big_thing.vhd" 7 big_thing
+~A 1 "./src/Big_thing.vhd" 18 arch_big_thing
+~E 1 "./src/TestBench/big_thing_TB.vhd" 8 big_thing_tb
+~A 1 "./src/TestBench/big_thing_TB.vhd" 11 TB_ARCHITECTURE
+~E 1 "./src/Display.vhd" 6 Display
+~A 1 "./src/Display.vhd" 20 arch_display
+~E 1 "./src/Freq_divider.vhd" 6 Freq_divider
+~A 1 "./src/Freq_divider.vhd" 14 arch_divider
+~E 0 "./src/Freq_divider.vhd" 6 PS2_divizor
+~A 1 "./src/Freq_divider.vhd" 14 Arch_Div_SEG
+~E 1 "./src/Reciever.vhd" 7 Reciever
+~A 1 "./src/Reciever.vhd" 21 arch_reciever
+~E 1 "./src/test.vhd" 6 test
+~A 1 "./src/test.vhd" 14 arh
+~C 1 "./src/TestBench/big_thing_TB.vhd" 54 testbench_for_big_thing

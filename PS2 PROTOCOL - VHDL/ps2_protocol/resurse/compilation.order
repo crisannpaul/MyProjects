@@ -1,0 +1,6 @@
+.\src\Freq_divider.vhd
+.\src\Reciever.vhd
+.\src\Display.vhd
+.\src\Big_thing.vhd
+.\src\test.vhd
+.\src\TestBench\big_thing_TB.vhd

@@ -1,0 +1,6 @@
+i<>.\src\Display.vhd
+i<>.\src\PS2_divizor.vhd
+i<>.\src\reciever.vhd
+i<>.\src\PS2_unity.vhd
+i<>.\src\TestBench\big_thing_TB.vhd
+i<>.\src\test.vhd
