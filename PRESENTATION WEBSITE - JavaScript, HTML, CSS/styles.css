@@ -1,0 +1,11 @@
+body {
+    background-color: #f0f0f0;
+}
+
+#intro {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 150px;
+}
